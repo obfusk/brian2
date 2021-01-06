@@ -8,23 +8,28 @@ stages:
         vmImage: 'ubuntu-20.04'
       strategy:
         matrix:
+          Python38_runtime_no_coverage:
+            python.version: '3.8'
+            script_name: dev/continuous-integration/run_test_suite.py
+            standalone: false
+            split_run: 1
           Python38_runtime_1:
             python.version: '3.8'
             script_name: dev/continuous-integration/run_test_suite.py
             standalone: false
             split_run: 1
-            upload_coverage : True
+            upload_coverage : true
           Python38_runtime_2:
             python.version: '3.8'
             script_name: dev/continuous-integration/run_test_suite.py
             standalone: false
             split_run: 2
-            upload_coverage : True
+            upload_coverage : true
           Python38_standalone:
             python.version: '3.8'
             script_name: dev/continuous-integration/run_test_suite.py
             standalone: true
-            upload_coverage : True
+            upload_coverage : true
       steps:
       - template: dev/continuous-integration/azure-steps.yml
 
