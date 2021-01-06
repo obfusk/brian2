@@ -863,7 +863,7 @@ class CPPStandaloneDevice(Device):
                 f.write(source_list)
         else:
             # Generate the makefile
-            if os.name=='nt':
+            if os.name == 'nt':
                 rm_cmd = 'del *.o /s\n\tdel main.exe $(DEPS)'
             else:
                 rm_cmd = 'rm $(OBJS) $(PROGRAM) $(DEPS)'
@@ -873,6 +873,8 @@ class CPPStandaloneDevice(Device):
             else:
                 compiler_debug_flags = ''
                 linker_debug_flags = ''
+            print('compiler is', compiler)
+            openmp_flag = '-fopenmp=libomp'
             makefile_tmp = self.code_object_class().templater.makefile(None, None,
                 source_files=' '.join(sorted(writer.source_files)),
                 header_files=' '.join(sorted(writer.header_files)),
@@ -880,6 +882,7 @@ class CPPStandaloneDevice(Device):
                 compiler_debug_flags=compiler_debug_flags,
                 linker_debug_flags=linker_debug_flags,
                 linker_flags=linker_flags,
+                openmp_flag=openmp_flag,
                 rm_cmd=rm_cmd)
             writer.write('makefile', makefile_tmp)
 
