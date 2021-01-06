@@ -15,8 +15,8 @@ steps:
 
   - bash: |
       source activate $HOME/test_env
-      conda install --quiet --yes -c conda-forge gcc openmp
-    displayName: 'Install gcc and OpenMP support on OS X'
+      conda install --quiet --yes -c conda-forge clangxx_osx-64 llvm-openmp openmp 'cctools>=949.0.1' 'ld64>=530'
+    displayName: 'Install clang and OpenMP support on OS X'
     condition: eq(variables['agent.os'], 'Darwin')
 
   - bash: |
