@@ -41,7 +41,7 @@ steps:
       CIRCLECI: 1
       CIRCLE_BUILD_NUM: $(Build.BuildNumber)
       CIRCLE_BRANCH: $(Build.SourceBranchName)
-      COVERALLS_FLAG_NAME: $(matrix)
+      COVERALLS_FLAG_NAME: $(System.JobName)
       COVERALLS_REPO_TOKEN: $(coveralls_repo_token)
       COVERALLS_PARALLEL: true
     displayName: 'Upload coverage data to coveralls'
