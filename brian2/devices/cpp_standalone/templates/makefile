@@ -6,7 +6,6 @@ SRCS = {{source_files}}
 H_SRCS = {{header_files}}
 OBJS = ${SRCS:.cpp=.o}
 OBJS := ${OBJS:.c=.o}
-CC = x86_64-apple-darwin13.4.0-clang++
 OPTIMISATIONS = {{ compiler_flags }}
 CFLAGS = -c -Wno-write-strings $(OPTIMISATIONS) -I. {{ openmp_flag }} {{ compiler_debug_flags }}
 LFLAGS = {{ openmp_pragma('compilation') }} {{ linker_flags }} {{ linker_debug_flags }}
@@ -17,17 +16,17 @@ all: $(PROGRAM)
 .PHONY: all clean
 
 $(PROGRAM): $(OBJS) $(DEPS) makefile
-	$(CC) $(OBJS) -o $(PROGRAM) $(LFLAGS)
+	$(CXX) $(OBJS) -o $(PROGRAM) $(LFLAGS)
 
 clean:
 	{{ rm_cmd }}
 
 make.deps: $(SRCS) $(H_SRCS)
-	$(CC) $(CFLAGS) -MM $(SRCS) > make.deps
+	$(CXX) $(CFLAGS) -MM $(SRCS) > make.deps
 	
 ifneq ($(wildcard $(DEPS)), )
 include $(DEPS)
 endif
 
 %.o : %.cpp makefile
-	$(CC) $(CFLAGS) $< -o $@
+	$(CXX) $(CFLAGS) $< -o $@
