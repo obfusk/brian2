@@ -14,8 +14,9 @@ steps:
     displayName: 'Setup conda environment'
 
   - bash: |
-      conda install --quiet --yes -c conda-forge llvm-openmp
-    displayName: 'Install OpenMP support for clang/llvm'
+      source activate $HOME/test_env
+      conda install --quiet --yes -c conda-forge clangxx_osx-64 llvm-openmp
+    displayName: 'Install clang and OpenMP support on OS X'
     condition: eq(variables['agent.os'], 'Darwin')
 
   - bash: |
