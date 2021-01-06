@@ -1,3 +1,5 @@
+SHELL = sh -xv
+
 PROGRAM = main
 
 SRCS = {{source_files}}
