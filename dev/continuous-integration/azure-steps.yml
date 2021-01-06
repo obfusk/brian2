@@ -42,4 +42,4 @@ steps:
       CIRCLE_BUILD_NUM: $(Build.BuildNumber)
       COVERALLS_REPO_TOKEN: $(coveralls_repo_token)
     displayName: 'Upload coverage data to coveralls'
-    condition: eq(variables['upload_coverage'], 'True')
+    condition: eq(${upload_coverage}, true)
