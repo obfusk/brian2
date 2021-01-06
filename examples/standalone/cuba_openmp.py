@@ -4,7 +4,7 @@ Run the ``cuba.py`` example with OpenMP threads.
 """
 from brian2 import *
 
-set_device('cpp_standalone', directory='CUBA')
+set_device('cpp_standalone', directory='CUBA', debug=True)
 prefs.devices.cpp_standalone.openmp_threads = 4
 
 taum = 20*ms

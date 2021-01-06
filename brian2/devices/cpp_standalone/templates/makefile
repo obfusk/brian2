@@ -6,7 +6,7 @@ OBJS = ${SRCS:.cpp=.o}
 OBJS := ${OBJS:.c=.o}
 CC = @g++
 OPTIMISATIONS = {{ compiler_flags }}
-CFLAGS = -c -Wno-write-strings $(OPTIMISATIONS) -I. {{ openmp_pragma('compilation') }} {{ compiler_debug_flags }}
+CFLAGS = -c -Wno-write-strings $(OPTIMISATIONS) -I. {{ openmp_flag }} {{ compiler_debug_flags }}
 LFLAGS = {{ openmp_pragma('compilation') }} {{ linker_flags }} {{ linker_debug_flags }}
 DEPS = make.deps
 
