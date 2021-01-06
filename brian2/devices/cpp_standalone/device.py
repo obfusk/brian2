@@ -877,7 +877,7 @@ class CPPStandaloneDevice(Device):
             print('CC is', os.environ.get('CC', ''))
             import sysconfig
             print('distutils CC', sysconfig.get_config_vars().get('CC', ''))
-            openmp_flag = '-fopenmp=libomp'
+            openmp_flag = '-fopenmp'
             makefile_tmp = self.code_object_class().templater.makefile(None, None,
                 source_files=' '.join(sorted(writer.source_files)),
                 header_files=' '.join(sorted(writer.header_files)),
