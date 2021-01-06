@@ -875,8 +875,8 @@ class CPPStandaloneDevice(Device):
                 linker_debug_flags = ''
             print('compiler is', compiler)
             print('CC is', os.environ.get('CC', ''))
-            import distutils
-            print('distutils CC', distutils.sysconfig_get_config_vars().get('CC', ''))
+            import sysconfig
+            print('distutils CC', sysconfig.get_config_vars().get('CC', ''))
             openmp_flag = '-fopenmp=libomp'
             makefile_tmp = self.code_object_class().templater.makefile(None, None,
                 source_files=' '.join(sorted(writer.source_files)),
