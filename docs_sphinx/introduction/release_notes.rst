@@ -1,6 +1,55 @@
 Release notes
 =============
 
+.. _brian2.5:
+Brian 2.5
+---------
+
+New features
+~~~~~~~~~~~~
+* Generator expressions in different direction (:issue:`1294`)
+* Fixed size random samples (:issue:`1280`)
+* Fair default build flags on several architectures (:issue:`1277`). Thanks to
+  Étienne Mollier for contributing this feature.
+
+Selected improvements and bug fixes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Better C++ compiler detection on UNIX systems, e.g. with Anaconda installations
+  (:issue:`1304`). Thanks to Jan Marker for this contribution.
+* Fixed LaTeX output for newer sympy versions (:issue:`1299`). Thanks to Sebastian
+  Schmitt for reporting this issue. The problem and its fix is described in detail
+  in this `blog post <https://briansimulator.org/posts/2021/bug-hunt-episode-1-broken-latex-output-for-equations/>`_.
+* Fixed string representation for units (:issue:`1291`). Recreating a unit from
+  its string representation gave wrong results in some corner cases.
+* Fix an error during the determination of appropriate C++ compiler flags on Windows
+  with Python 3.9 (:issue:`1286`), and fix the detection of a C99-compatible compiler
+  on Windows (:issue:`1257`). Thanks to Kyle Johnsen for reporting the errors
+  and providing both fixes.
+* More robust usage of external constants in C++ standalone code, avoiding clashes
+  when the user defines constants with common names like ``x`` (:issue:`1279`). Thanks
+  to user ``@wxie2013`` for making us aware of this issue.
+* Raise an error if summed variables refer to event-based variables (:issue:`1274`). Thanks
+  to Rohith Varma Buddaraju for fixing this issue.
+* Avoid warnings about deprecated numpy aliases (:issue:`1273`).
+
+Infrastructure and documentation improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* The test suite has been moved to GitHub Actions (:issue:`1298`). Thanks to
+  Rohith Varma Buddaraju for implementing this move.
+* Additional documentation examples, e.g. for C++ standalone mode and parallel runs
+  of simulations (:issue:`1265`). Contributed by A. Ziaeemehr.
+* A documentation example showing the use of the `sbi package <https://www.mackelab.org/sbi/>`_
+  to perform simulation-based inference with Brian (:issue:`1301`)
+* Binary wheels are now made available on PyPI for all supported platforms (including Apple's
+  new M1 architecture).
+* Versioneer
+
+Contributions
+~~~~~~~~~~~~~
+Github code, documentation, and issue contributions (ordered by the number of
+contributions):
+
+
 Brian 2.4.2
 ------------
 This is another bugfix release which fixes a number of bugs and updates our
